@@ -46,6 +46,70 @@ class Person
     }
 
     /**
+     * @param string $name
+     * @param integer $sex
+     * @param string $id_number
+     * @param string $address
+     * @param string $token
+     *
+     * @return PersonEntity $person
+     */
+    public function createWithoutSave(string $name, int $sex, string $id_number, string $address, string $token): PersonEntity
+    {
+        $person = $this->getByIdNumber($id_number);
+
+        if ($person->getId() !== null) {
+            return $person;
+        }
+
+        $person->setName($name);
+        $person->setSex($sex);
+        $person->setIdNumber($id_number);
+        $person->setAddress($address);
+        $person->setToken($token);
+
+        return $person;
+    }
+
+    /**
+     * @param PersonEntity $person
+     *
+     * @return PersonEntity $person
+     */
+    public function save(PersonEntity $person): PersonEntity
+    {
+        $em = $this->container->get('doctrine')->getManager();
+
+        $em->persist($person);
+        $em->flush();
+
+        return $person;
+    }
+
+    /**
+     * @param array $persons
+     *
+     * @return integer
+     */
+    public function saveMany(array $persons): int
+    {
+        $persisted = 0;
+        $em = $this->container->get('doctrine')->getManager();
+
+        foreach ($persons as $person) {
+            if (!(person instanceof PersonEntity)) {
+                continue;
+            }
+            $em->persist($person);
+            $persisted ++;
+        }
+
+        $em->flush();
+
+        return $persisted;
+    }
+
+    /**
      * @param array $where
      *
      * @return array
