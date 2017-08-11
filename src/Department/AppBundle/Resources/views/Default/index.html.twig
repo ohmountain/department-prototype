@@ -5,18 +5,6 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
-    {% javascripts '@DepartmentAppBundle/Resources/public/js/app.js'  %}
-    <script src="{{ asset_url  }}"></script>
-    <script>
-      {% if error %}
-      var hasError = true;
-      {% else %}
-      var hasError = false;
-      {% endif %}
-      var _username = "{{ last_username }}"
-      var _csrf_token = "{{ csrf_token('authenticate') }}";
-    </script>
-    {% endjavascripts %}
+    hello World
   </body>
 </html>
