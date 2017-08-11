@@ -1,3 +1,7 @@
+department_app:
+    resource: "@DepartmentAppBundle/Resources/config/routing.yml"
+    prefix:   /
+
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /

@@ -76,3 +76,7 @@ fos_user:
     from_email:
       address: localhost
       sender_name: renshan
+
+department_app:
+    post_token: sssssdsada  # 用于推送给诚信办的token
+    receive_token: ddddd    # 给诚信办的token
