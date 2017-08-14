@@ -97,7 +97,7 @@ class Person
         $em = $this->container->get('doctrine')->getManager();
 
         foreach ($persons as $person) {
-            if (!(person instanceof PersonEntity)) {
+            if (!($person instanceof PersonEntity)) {
                 continue;
             }
             $em->persist($person);
